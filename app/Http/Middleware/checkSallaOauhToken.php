@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\OauthToken;
+use Illuminate\Support\Facades\Auth;
 
 class checkSallaOauhToken
 {
@@ -16,7 +17,7 @@ class checkSallaOauhToken
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (empty(OauthToken::first())) {
+        if (Auth::check() && empty(OauthToken::first())) {
             return redirect()->route('oauth.redirect');
         } 
         

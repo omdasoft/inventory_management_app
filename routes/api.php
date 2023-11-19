@@ -14,6 +14,3 @@ Route::prefix('admin')->name('admin.')->group(function() {
 Route::get('oauth/redirect', [OAuthController::class, 'redirect'])->name('oauth.redirect');
 Route::get('oauth/callback', [OAuthController::class, 'callback'])->name('oauth.callback');
 Route::post('oauth/token', [OAuthController::class, 'getToken'])->name('oauth.token');    
-
-//todo 
-//cache products 

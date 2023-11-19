@@ -123,7 +123,7 @@ class SallaAuthService
     public function getToken()
     {
         //check token has expaired, get the updated token and update the cache, else get the token from cache 
-        if ($this->token->hasExpired()) {
+        if ($this->token && $this->token->hasExpired()) {
             $updatedToken = $this->getNewAccessToken()->getToken();
             $this->updateCacheToken($updatedToken, $this->token->expires_in);
         }
