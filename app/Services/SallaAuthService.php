@@ -2,13 +2,14 @@
 
 namespace App\Services;
 
-use App\Models\OauthToken;
 use App\Models\User;
+use App\Models\OauthToken;
+use Illuminate\Support\Facades\Cache;
+use Salla\OAuth2\Client\Provider\Salla;
+use League\OAuth2\Client\Token\AccessToken;
+use Salla\OAuth2\Client\Provider\SallaUser;
 use Illuminate\Support\Traits\ForwardsCalls;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
-use League\OAuth2\Client\Token\AccessToken;
-use Salla\OAuth2\Client\Provider\Salla;
-use Salla\OAuth2\Client\Provider\SallaUser;
 
 /**
  * @mixin Salla
@@ -104,9 +105,6 @@ class SallaAuthService
      */
     public function getNewAccessToken()
     {
-        // if ($this->token->hasExpired()) {
-        //     return new AccessToken($this->token->toArray());
-        // }
         // let's request a new access token via refresh token.
         $token = $this->provider->getAccessToken('refresh_token', [
             'refresh_token' => $this->token->refresh_token
@@ -124,7 +122,22 @@ class SallaAuthService
 
     public function getToken()
     {
-        return $this->getNewAccessToken()->getToken();
+        //check token has expaired, get the updated token and update the cache, else get the token from cache 
+        if ($this->token->hasExpired()) {
+            $updatedToken = $this->getNewAccessToken()->getToken();
+            $this->updateCacheToken($updatedToken, $this->token->expires_in);
+        }
+        
+        return Cache::get('salla_access_token', 'null');
+    }
+
+    private function updateCacheToken(string $token, int $ttl)
+    {
+        if (Cache::has('salla_access_token')) {
+            Cache::forget('salla_access_token');
+        } 
+        
+        Cache::put('salla_access_token', $token, $ttl);
     }
 
     public function request(string $method, string $url, array $options = [])

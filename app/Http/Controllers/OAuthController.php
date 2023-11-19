@@ -2,8 +2,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\OauthToken;
-use App\Services\SallaAuthService;
 use Illuminate\Http\Request;
+use App\Services\SallaAuthService;
+use Illuminate\Support\Facades\Cache;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 
 class OAuthController extends Controller
@@ -33,6 +34,7 @@ class OAuthController extends Controller
                 'code' => $request->code ?? '',
             ]);
 
+            $ttl = $token->getExpires();
             $ouathToken = OauthToken::first();
 
             if ($ouathToken) {
@@ -45,8 +47,10 @@ class OAuthController extends Controller
                 'refresh_token' => $token->getRefreshToken(),
             ]);
 
-            session(['salla_access_token' => $token->getToken()]);
-
+            Cache::remember('salla_access_token', $ttl, function() use ($token) {
+                return $token->getToken();
+            });
+            
             return redirect('/admin/dashboard');
         } catch (IdentityProviderException $e) {
             return redirect('/admin/dashboard')->withStatus($e->getMessage());
