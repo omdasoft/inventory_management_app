@@ -18,9 +18,3 @@ use App\Http\Controllers\ApplicationController;
 // });
 
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)')->middleware(['auth', checkSallaOauhToken::class]);
-
-// Salla Auth OAuth routes
-// Route::group(['middleware' => 'auth'], function () {
-//     Route::get('/oauth/redirect', [OAuthController::class, 'redirect'])->name('oauth.redirect');
-//     Route::get('/oauth/callback', [OAuthController::class, 'callback'])->name('oauth.callback');
-// });
