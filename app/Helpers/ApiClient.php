@@ -26,12 +26,13 @@ class ApiClient
                 return $response->body();
             } else {
                 $statusCode = $response->status();
-                $errorMessage = $response->json('message');
+                $errorMessage = $response->json('message') ?? "something went wrong";
                 Log::error("HTTP request failed with status code $statusCode: $errorMessage File: ".__CLASS__." Time: ".now());
-                return json_encode(['status' => $statusCode, 'error' => $errorMessage ?? "something went wrong"]);
+                return json_encode(['status' => $statusCode, 'error' => $errorMessage]);
             }
         } catch (\Exception $e) {
             Log::error("An unexpected error occurred: " . $e->getMessage());
+            return json_encode(['status' => 500, 'error' => "something went wrong"]);
         }
     }
 }
