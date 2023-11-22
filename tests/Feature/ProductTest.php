@@ -14,12 +14,28 @@ class ProductTest extends TestCase
             'https://api.salla.dev/admin/v2/*' => Http::response($productList, 200, ['Content-Type' => 'application/json']),
         ]);
 
-        $respose = Http::get('https://api.salla.dev/admin/v2/products');
-        $resposeArray = $respose->json();
-        $this->assertEquals(200, $resposeArray['status']);
-        $this->assertEquals(4, count($resposeArray));
+        $respose = Http::get('https://api.salla.dev/admin/v2/products')->json();
+        $this->assertEquals(200, $respose['status']);
+        $this->assertEquals(4, count($respose));
         $this->assertTrue($respose['success']);
-        $this->assertArrayHasKey('data', $resposeArray);
-        $this->assertArrayHasKey('pagination', $resposeArray);
+        $this->assertArrayHasKey('data', $respose);
+        $this->assertArrayHasKey('pagination', $respose);
+    }
+
+    public function test_get_product_details(): void
+    {
+        $productDetails = file_get_contents('tests/Fixtures/salla_product_details.json');
+        $product = json_decode($productDetails);
+        $productArr = json_decode(json_encode($product), true);
+        $id = $productArr['data']['id'];
+        Http::fake([
+            'https://api.salla.dev/admin/v2/*' => Http::response($productDetails, 200, ['Content-Type' => 'application/json']),
+        ]);
+
+        $respose = Http::get("https://api.salla.dev/admin/v2/products/$id")->json();
+        $this->assertEquals(200, $respose['status']);
+        $this->assertEquals($id, $respose['data']['id']);
+        $this->assertTrue($respose['success']);
+        $this->assertArrayHasKey('data', $respose);
     }
 }

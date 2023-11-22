@@ -1,0 +1,509 @@
+{
+    "status": 200,
+    "success": true,
+    "data": {
+      "id": 1078784557,
+      "promotion": {
+        "title": "ترويجي",
+        "sub_title": "فرعي"
+      },
+      "sku": null,
+      "mpn": null,
+      "gtin": null,
+      "type": "service",
+      "name": "طباعة",
+      "short_link_code": "XDblrV",
+      "urls": {
+        "customer": "https://salla.sa/dev-wofftr4xsra5xtlv/طباعة/p1078784557",
+        "admin": "https://s.salla.sa/products/1078784557"
+      },
+      "price": {
+        "amount": 300,
+        "currency": "SAR"
+      },
+      "taxed_price": {
+        "amount": 300,
+        "currency": "SAR"
+      },
+      "pre_tax_price": {
+        "amount": 300,
+        "currency": "SAR"
+      },
+      "tax": {
+        "amount": 0,
+        "currency": "SAR"
+      },
+      "description": "<p>وصف</p>",
+      "quantity": 0,
+      "status": "out",
+      "is_available": false,
+      "views": 0,
+      "sale_price": {
+        "amount": 0,
+        "currency": "SAR"
+      },
+      "sale_end": null,
+      "require_shipping": false,
+      "cost_price": null,
+      "weight": 0,
+      "weight_type": "kg",
+      "with_tax": true,
+      "url": "https://salla.sa/dev-wofftr4xsra5xtlv/طباعة/p1078784557",
+      "main_image": "https://cdn.salla.sa/bYQEn/Za5YptTJAMrWg8hoD9WGSNmDYHeJyhnXxb5AMpJf.jpg",
+      "images": [
+        {
+          "id": 1159018862,
+          "url": "https://cdn.salla.sa/bYQEn/prCjjr1JjPkJkar5lqmhC7MnB5Mj6O6xwNllGQOT.jpg",
+          "main": true,
+          "three_d_image_url": "",
+          "alt": "",
+          "video_url": "",
+          "type": "image",
+          "sort": 0
+        }
+      ],
+      "sold_quantity": 0,
+      "rating": {
+        "total": 0,
+        "count": 1,
+        "rate": 0
+      },
+      "regular_price": {
+        "amount": 300,
+        "currency": "SAR"
+      },
+      "max_items_per_user": 0,
+      "maximum_quantity_per_order": null,
+      "show_in_app": true,
+      "notify_quantity": null,
+      "hide_quantity": false,
+      "unlimited_quantity": true,
+      "managed_by_branches": false,
+      "services_blocks": {
+        "installments": []
+      },
+      "calories": null,
+      "starting_price": null,
+      "metadata": {
+        "title": null,
+        "description": null
+      },
+      "allow_attachments": false,
+      "is_pinned": false,
+      "pinned_date": "2022-01-16 14:35:43",
+      "sort": 0,
+      "enable_upload_image": false,
+      "updated_at": "2022-06-12 13:20:23",
+      "options": [
+        {
+          "id": 2103032523,
+          "name": "نوع الطباعة",
+          "description": null,
+          "type": "radio",
+          "required": true,
+          "associated_with_order_time": 0,
+          "availability_range": false,
+          "not_same_day_order": false,
+          "choose_date_time": null,
+          "from_date_time": null,
+          "to_date_time": null,
+          "sort": null,
+          "advance": true,
+          "display_type": "color",
+          "visibility": "always",
+          "translations": {
+            "fr": {
+              "option_name": "printing type",
+              "description": null
+            },
+            "ar": {
+              "option_name": "نوع الطباعة",
+              "description": null
+            }
+          },
+          "values": [
+            {
+              "id": 885629149,
+              "name": "حرارية",
+              "price": {
+                "amount": 0,
+                "currency": "SAR"
+              },
+              "display_value": "#ff1515",
+              "advance": true,
+              "option_id": 2103032523,
+              "image_url": null,
+              "hashed_display_value": "#ff1515",
+              "translations": {
+                "fr": {
+                  "option_details_name": "heat"
+                },
+                "ar": {
+                  "option_details_name": "حرارية"
+                }
+              }
+            },
+            {
+              "id": 110546910,
+              "name": "عادية",
+              "price": {
+                "amount": 0,
+                "currency": "SAR"
+              },
+              "display_value": "#000000",
+              "advance": true,
+              "option_id": 2103032523,
+              "image_url": null,
+              "hashed_display_value": "#000000",
+              "translations": {
+                "fr": {
+                  "option_details_name": "normal"
+                },
+                "ar": {
+                  "option_details_name": "عادية"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 1012943776,
+          "name": "SIZE",
+          "description": null,
+          "type": "checkbox",
+          "required": false,
+          "associated_with_order_time": 0,
+          "availability_range": false,
+          "not_same_day_order": false,
+          "choose_date_time": null,
+          "from_date_time": null,
+          "to_date_time": null,
+          "sort": null,
+          "advance": false,
+          "display_type": "text",
+          "visibility": "always",
+          "translations": {
+            "ar": {
+              "option_name": "SIZE",
+              "description": null
+            }
+          },
+          "values": [
+            {
+              "id": 785602498,
+              "name": "BIG",
+              "price": {
+                "amount": 120,
+                "currency": "SAR"
+              },
+              "display_value": "BIG",
+              "advance": false,
+              "option_id": 1012943776,
+              "image_url": null,
+              "hashed_display_value": "BIG",
+              "translations": {
+                "ar": {
+                  "option_details_name": "BIG"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 1131033260,
+          "name": "حقل نصي صغير",
+          "description": "دسكربشن",
+          "type": "text",
+          "required": true,
+          "associated_with_order_time": 0,
+          "availability_range": false,
+          "not_same_day_order": false,
+          "choose_date_time": null,
+          "from_date_time": null,
+          "to_date_time": null,
+          "sort": 0,
+          "advance": false,
+          "display_type": null,
+          "visibility": "always",
+          "translations": {
+            "fr": {
+              "option_name": "small testbox",
+              "description": "describtion in french"
+            },
+            "ar": {
+              "option_name": "حقل نصي صغير",
+              "description": "دسكربشن"
+            }
+          },
+          "values": []
+        },
+        {
+          "id": 195822961,
+          "name": "خيارات",
+          "description": "وصف خيارات",
+          "type": "radio",
+          "required": true,
+          "associated_with_order_time": 0,
+          "availability_range": false,
+          "not_same_day_order": false,
+          "choose_date_time": null,
+          "from_date_time": null,
+          "to_date_time": null,
+          "sort": 1,
+          "advance": false,
+          "display_type": null,
+          "visibility": "always",
+          "translations": {
+            "fr": {
+              "option_name": "options",
+              "description": "options desc"
+            },
+            "ar": {
+              "option_name": "خيارات",
+              "description": "وصف خيارات"
+            }
+          },
+          "values": [
+            {
+              "id": 1129382143,
+              "name": "خيار 1",
+              "price": {
+                "amount": 0,
+                "currency": "SAR"
+              },
+              "display_value": null,
+              "advance": false,
+              "option_id": 195822961,
+              "image_url": null,
+              "hashed_display_value": null,
+              "translations": {
+                "fr": {
+                  "option_details_name": "option 1"
+                },
+                "ar": {
+                  "option_details_name": "خيار 1"
+                }
+              }
+            },
+            {
+              "id": 490614776,
+              "name": "خيار 2",
+              "price": {
+                "amount": 0,
+                "currency": "SAR"
+              },
+              "display_value": null,
+              "advance": false,
+              "option_id": 195822961,
+              "image_url": null,
+              "hashed_display_value": null,
+              "translations": {
+                "fr": {
+                  "option_details_name": "options 2"
+                },
+                "ar": {
+                  "option_details_name": "خيار 2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 1834176511,
+          "name": "حقل موعد",
+          "description": "وصف حقل موعد",
+          "type": "datetime",
+          "required": true,
+          "associated_with_order_time": 1,
+          "availability_range": false,
+          "not_same_day_order": false,
+          "choose_date_time": null,
+          "from_date_time": null,
+          "to_date_time": null,
+          "sort": 2,
+          "advance": false,
+          "display_type": null,
+          "visibility": "on_condition",
+          "translations": {
+            "fr": {
+              "option_name": "time and date",
+              "description": "description"
+            },
+            "ar": {
+              "option_name": "حقل موعد",
+              "description": "وصف حقل موعد"
+            }
+          },
+          "visibility_condition_type": "=",
+          "visibility_condition_option": 195822961,
+          "visibility_condition_value": 1129382143,
+          "values": []
+        },
+        {
+          "id": 1713900004,
+          "name": "اسم حقل رقمي",
+          "description": "وصف حقل ؤقمي",
+          "type": "number",
+          "required": true,
+          "associated_with_order_time": 0,
+          "availability_range": false,
+          "not_same_day_order": false,
+          "choose_date_time": null,
+          "from_date_time": null,
+          "to_date_time": null,
+          "sort": 3,
+          "advance": false,
+          "display_type": null,
+          "visibility": "always",
+          "translations": {
+            "fr": {
+              "option_name": "numeric box",
+              "description": "numeric box desc"
+            },
+            "ar": {
+              "option_name": "اسم حقل رقمي",
+              "description": "وصف حقل ؤقمي"
+            }
+          },
+          "values": []
+        },
+        {
+          "id": 696546784,
+          "name": "splitter",
+          "description": null,
+          "type": "splitter",
+          "required": false,
+          "associated_with_order_time": 0,
+          "availability_range": false,
+          "not_same_day_order": false,
+          "choose_date_time": null,
+          "from_date_time": null,
+          "to_date_time": null,
+          "sort": 4,
+          "advance": false,
+          "display_type": null,
+          "visibility": "always",
+          "translations": {
+            "ar": {
+              "option_name": "splitter",
+              "description": null
+            }
+          },
+          "values": []
+        }
+      ],
+      "skus": [
+        {
+          "id": 1518361142,
+          "price": {
+            "amount": 300,
+            "currency": "SAR"
+          },
+          "regular_price": {
+            "amount": 0,
+            "currency": "SAR"
+          },
+          "sale_price": null,
+          "stock_quantity": 0,
+          "barcode": null,
+          "sku": null,
+          "mpn": null,
+          "gtin": null,
+          "related_options": [
+            885629149
+          ],
+          "related_option_values": [
+            885629149
+          ],
+          "weight": null,
+          "weight_type": "kg",
+          "weight_label": "٠٫١ كجم"
+        },
+        {
+          "id": 879589687,
+          "price": {
+            "amount": 300,
+            "currency": "SAR"
+          },
+          "regular_price": {
+            "amount": 0,
+            "currency": "SAR"
+          },
+          "sale_price": null,
+          "stock_quantity": 0,
+          "barcode": null,
+          "sku": null,
+          "mpn": null,
+          "gtin": null,
+          "related_options": [
+            110546910
+          ],
+          "related_option_values": [
+            110546910
+          ],
+          "weight": null,
+          "weight_type": "kg",
+          "weight_label": "٠٫١ كجم"
+        }
+      ],
+      "booking_details": {
+        "id": 1219318081,
+        "type": "date_time",
+        "session_duration": 50,
+        "session_gap": 3,
+        "sessions_count": 10,
+        "location": "Medina",
+        "time_strict_type": "days",
+        "time_strict": 5,
+        "overrides": [
+          {
+            "id": 520625452,
+            "date": "2023-04-09"
+          },
+          {
+            "id": 1758805037,
+            "date": "2023-04-10"
+          }
+        ],
+        "availabilities": [
+          {
+            "id": 1995455874,
+            "day": "sunday",
+            "times": [
+              {
+                "from": "09:30",
+                "to": "13:00"
+              },
+              {
+                "from": "12:00",
+                "to": "22:00"
+              }
+            ],
+            "is_available": true
+          },
+          {
+            "id": 314211212,
+            "day": "monday",
+            "times": [
+              {
+                "from": "09:30",
+                "to": "13:00"
+              }
+            ],
+            "is_available": true
+          }
+        ]
+      },
+      "categories": [],
+      "brand": {
+        "id": 1097509908,
+        "name": "بوما",
+        "description": "بوما وصف بالعربي",
+        "banner": "https://cdn.salla.sa/bYQEn/69QZx9DHUIQDLCoN7YAq9htHBH0tzD5luk5Rob7w.png",
+        "logo": "https://cdn.salla.sa/bYQEn/QqxF15HPwXw92PPsI7xSZ6F8ONWlOPojoWl48y4W.png",
+        "ar_char": "ب",
+        "en_char": "B"
+      },
+      "tags": []
+    }
+  }
