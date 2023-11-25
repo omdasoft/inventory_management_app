@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\checkSallaOauhToken;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,7 @@ use App\Http\Controllers\ApplicationController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Route::get('/', function() {
-//     return view('welcome');
-// });
-
+Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('login', [AuthenticatedSessionController::class, 'login']);
+Route::post('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)')->middleware(['auth', checkSallaOauhToken::class]);

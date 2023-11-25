@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::prefix('admin')->name('admin.')->group(function() {
+Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(function() {
     Route::get('products', [ProductController::class, 'index'])->name('products');
     Route::get('products/{id}', [ProductController::class, 'view'])->name('products.view');
 });

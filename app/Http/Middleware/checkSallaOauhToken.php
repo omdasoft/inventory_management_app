@@ -19,7 +19,7 @@ class checkSallaOauhToken
     {
         if (Auth::check() && empty(OauthToken::first())) {
             return redirect()->route('oauth.redirect');
-        } 
+        }
         
         return $next($request);
     }
