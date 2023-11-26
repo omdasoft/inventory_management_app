@@ -1,34 +1,8 @@
 <script setup>
-import axios from "axios";
-import { onMounted, reactive, ref } from "vue";
-const baseUrl = "https://inventory_managment_app.test/api/admin";
-const products = ref({});
-const pagination = ref({});
-const loading = ref(false);
-const categories = ref({});
-const errorMessage = ref(null);
-const productList = () => {
-  loading.value = true;
-  axios
-    .get(baseUrl + "/products")
-    .then((res) => {
-      if (res.data.status == 200) {
-        products.value = res.data.data;
-        pagination.value = res.data.pagination;
-      } else {
-        errorMessage.value = "there is an error occured";
-      }
-    })
-    .catch(err => {
-      if (err.response) {
-        errorMessage.value = "there is an error occured";
-      }
-    })
-    .finally(() => {
-      loading.value = false;
-    });
-};
-
+import { onMounted} from "vue";
+import useProducts from "@/composable/products";
+const {products, getProducts, loading, errorMessage} = useProducts();
+// const categories = ref({});
 // const categoryList = () => {
 //   axios.get("https://api.salla.dev/admin/v2/categories", {
 //     headers: {
@@ -45,8 +19,7 @@ const productList = () => {
 // };
 
 onMounted(() => {
-  productList();
-  // categoryList();
+  getProducts();
 });
 </script>
 <template>

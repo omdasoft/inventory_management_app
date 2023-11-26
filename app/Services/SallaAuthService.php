@@ -122,13 +122,28 @@ class SallaAuthService
 
     public function getToken()
     {
-        //check token has expaired, get the updated token and update the cache, else get the token from cache 
-        if ($this->token && $this->token->hasExpired()) {
+        $ttl = $this->token->expires_in;
+        if ($this->accessTokenHasExpaired()) {
             $updatedToken = $this->getNewAccessToken()->getToken();
-            $this->updateCacheToken($updatedToken, $this->token->expires_in);
+            $this->updateCacheToken($updatedToken, $ttl);
+        } 
+
+        if (!$this->cacheHasAccessToken()) {
+            $updatedToken = $this->token->access_token;
+            $this->updateCacheToken($updatedToken, $ttl);
         }
-        
-        return Cache::get('salla_access_token', 'null');
+
+        return Cache::get('salla_access_token');
+    }
+
+    private function accessTokenHasExpaired(): bool
+    {
+        return $this->token && $this->token->hasExpired();
+    }
+
+    private function cacheHasAccessToken(): bool
+    {
+        return Cache::has('salla_access_token');
     }
 
     private function updateCacheToken(string $token, int $ttl)
