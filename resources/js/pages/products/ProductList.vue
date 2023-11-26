@@ -1,25 +1,14 @@
 <script setup>
-import { onMounted} from "vue";
+import { onMounted } from "vue";
 import useProducts from "@/composable/products";
-const {products, getProducts, loading, errorMessage} = useProducts();
-// const categories = ref({});
-// const categoryList = () => {
-//   axios.get("https://api.salla.dev/admin/v2/categories", {
-//     headers: {
-//         Authorization: `Bearer ${accessToken}`,
-//       },
-//   }).then((res) => {
-//     categories.value = res.data.data;
-//     console.log(categories.value);
-//   })
-//   .catch(err => {
-//     errorMessage.value = "Sorry, something went wrong";
-//     console.log(err.response.data.error);
-//   })
-// };
+import useCategories from "@/composable/categories";
 
+const { products, getProducts, isLoading, errorMessage } = useProducts();
+const { categories, getCategories } = useCategories();
 onMounted(() => {
   getProducts();
+  getCategories();
+  console.log(categories);
 });
 </script>
 <template>
@@ -98,13 +87,15 @@ onMounted(() => {
                     <div class="form-group">
                       <select class="select">
                         <option value="">Choose Category</option>
-                        <!-- <option
-                          v-for="category in categories"
-                          :value="category.name"
-                          :key="category.id"
-                        >
-                          {{ category.name }}
-                        </option> -->
+                        <template v-if="categories.length">
+                          <option
+                            v-for="category in categories"
+                            :value="category.name"
+                            :key="category.id"
+                          >
+                            {{ category.name }}
+                          </option>
+                        </template>
                       </select>
                     </div>
                   </div>
@@ -129,14 +120,16 @@ onMounted(() => {
           </div>
         </div>
         <div
-          v-if="loading"
+          v-if="isLoading"
           class="d-flex align-items-center justify-content-between"
         >
           <strong>Loading...</strong>
           <div class="spinner-border" role="status" aria-hidden="true"></div>
         </div>
         <div v-else class="table-responsive">
-          <div class="alert alert-danger" v-if="errorMessage">{{ errorMessage }}</div>
+          <div class="alert alert-danger" v-if="errorMessage">
+            {{ errorMessage }}
+          </div>
           <table class="table">
             <thead>
               <tr>
@@ -187,7 +180,13 @@ onMounted(() => {
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.status }}</td>
                 <td>
-                  <router-link :to="{name: 'product.details', params: {id: product.id}}" class="me-3">
+                  <router-link
+                    :to="{
+                      name: 'product.details',
+                      params: { id: product.id },
+                    }"
+                    class="me-3"
+                  >
                     <img src="/img/icons/eye.svg" alt="img" />
                   </router-link>
                   <a class="me-3" href="#">

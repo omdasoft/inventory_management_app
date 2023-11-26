@@ -21,7 +21,7 @@ class ProductController extends Controller
         return json_decode($response);
     }
 
-    public function view(int $id)
+    public function show(int $id)
     {
         $response = $this->productService->productDetails($id);
         return json_decode($response);

@@ -3,12 +3,13 @@ import { ref } from 'vue';
 
 export default function useProducts() {
     const products = ref({});
+    const productDetails = ref({});
     const pagination = ref({});
-    const loading = ref(false);
+    const isLoading = ref(false);
     const errorMessage = ref(null);
 
-    const getProducts = () => {
-        loading.value = true;
+    const getProducts = async () => {
+        isLoading.value = true;
         axios
             .get('/products')
             .then((res) => {
@@ -25,16 +26,37 @@ export default function useProducts() {
                 }
             })
             .finally(() => {
-                loading.value = false;
+                isLoading.value = false;
             });
     }
+
+    const getProduct = async (id) => {
+        isLoading.value = true;
+        axios
+            .get('/products/'+id)
+            .then((res) => {
+                if (res.data.status == 200) {
+                    productDetails.value = res.data.data;
+                } else {
+                    errorMessage.value = "there is an error occured";
+                }
+            })
+            .catch((err) => {
+                errorMessage.value = "there is an error occured";
+            })
+            .finally(() => {
+                isLoading.value = false;
+            });
+    };
 
     return {
         getProducts,
         products,
         pagination,
-        loading,
-        errorMessage
+        isLoading,
+        errorMessage,
+        productDetails,
+        getProduct
     }
 }
 

@@ -2,34 +2,37 @@
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import useProducts from "@/composable/products";
+const {productDetails, getProduct, isLoading, errorMessage} = useProducts();
+
 const router = useRouter();
 const route = useRoute();
-const baseUrl = "https://inventory_managment_app.test/api/admin";
+// const baseUrl = "https://inventory_managment_app.test/api/admin";
 const id = route.params.id;
-const errorMessage = ref(null);
-const details = ref({});
-const loading = ref(false);
-const productDetails = () => {
-  loading.value = true;
-  axios
-    .get(baseUrl + `/products/${id}`)
-    .then((res) => {
-      if (res.data.status == 200) {
-        details.value = res.data.data;
-      } else {
-        errorMessage.value = "there is an error occured";
-      }
-    })
-    .catch((err) => {
-      errorMessage.value = "there is an error occured";
-    })
-    .finally(() => {
-      loading.value = false;
-    });
-};
+// const errorMessage = ref(null);
+// const details = ref({});
+// const loading = ref(false);
+// const productDetails = () => {
+//   loading.value = true;
+//   axios
+//     .get(baseUrl + `/products/${id}`)
+//     .then((res) => {
+//       if (res.data.status == 200) {
+//         details.value = res.data.data;
+//       } else {
+//         errorMessage.value = "there is an error occured";
+//       }
+//     })
+//     .catch((err) => {
+//       errorMessage.value = "there is an error occured";
+//     })
+//     .finally(() => {
+//       loading.value = false;
+//     });
+// };
 
 onMounted(() => {
-  productDetails();
+  getProduct(id);
 });
 </script>
 <template>
@@ -41,7 +44,7 @@ onMounted(() => {
       </div>
     </div>
     <div
-      v-if="loading"
+      v-if="isLoading"
       class="d-flex align-items-center justify-content-between"
     >
       <strong>Loading...</strong>
@@ -64,17 +67,17 @@ onMounted(() => {
               <ul class="product-bar">
                 <li>
                   <h4>Product</h4>
-                  <h6>{{ details.name }}</h6>
+                  <h6>{{ productDetails.name }}</h6>
                 </li>
                 <li>
                   <h4>Category</h4>
-                  <h6 v-for="category in details.categories" :key="category.id">
+                  <h6 v-for="category in productDetails.categories" :key="category.id">
                     {{ category.name }}
                   </h6>
                 </li>
                 <li>
                   <h4>Brand</h4>
-                  <h6>{{ details.brand }}</h6>
+                  <h6>{{ productDetails.brand }}</h6>
                 </li>
                 <!-- <li>
                   <h4>Unit</h4>
@@ -82,7 +85,7 @@ onMounted(() => {
                 </li> -->
                 <li>
                   <h4>SKU</h4>
-                  <h6>{{ details.sku }}</h6>
+                  <h6>{{ productDetails.sku }}</h6>
                 </li>
                 <!-- <li>
                   <h4>Minimum Qty</h4>
@@ -90,34 +93,34 @@ onMounted(() => {
                 </li> -->
                 <li>
                   <h4>Quantity</h4>
-                  <h6>{{ details.quantity }}</h6>
+                  <h6>{{ productDetails.quantity }}</h6>
                 </li>
                 <li>
                   <h4>Tax</h4>
-                  <h6>{{ details.tax ? details.tax.amount : 0 }} %</h6>
+                  <h6>{{ productDetails.tax ? productDetails.tax.amount : 0 }} %</h6>
                 </li>
                 <li>
                   <h4>Taxed Price</h4>
                   <h6>
-                    {{ details.taxed_price ? details.taxed_price.amount : 0 }}
+                    {{ productDetails.taxed_price ? productDetails.taxed_price.amount : 0 }}
                   </h6>
                 </li>
                 <li>
                   <h4>Price</h4>
                   <h6>
                     {{
-                      details.regular_price ? details.regular_price.amount : 0
+                      productDetails.regular_price ? productDetails.regular_price.amount : 0
                     }}
                   </h6>
                 </li>
                 <li>
                   <h4>Status</h4>
-                  <h6>{{ details.status }}</h6>
+                  <h6>{{ productDetails.status }}</h6>
                 </li>
                 <li>
                   <h4>Description</h4>
                   <h6>
-                    {{ details.description }}
+                    {{ productDetails.description }}
                   </h6>
                 </li>
               </ul>
@@ -128,7 +131,7 @@ onMounted(() => {
       <div class="col-lg-4 col-sm-12">
         <div class="card">
           <div class="card-body">
-            <img :src="details.main_image" />
+            <img :src="productDetails.main_image" />
           </div>
         </div>
       </div>
