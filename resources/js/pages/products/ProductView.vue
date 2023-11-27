@@ -1,36 +1,13 @@
 <script setup>
 import axios from "axios";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useProducts from "@/composable/products";
 const {productDetails, getProduct, isLoading, errorMessage} = useProducts();
 
 const router = useRouter();
 const route = useRoute();
-// const baseUrl = "https://inventory_managment_app.test/api/admin";
 const id = route.params.id;
-// const errorMessage = ref(null);
-// const details = ref({});
-// const loading = ref(false);
-// const productDetails = () => {
-//   loading.value = true;
-//   axios
-//     .get(baseUrl + `/products/${id}`)
-//     .then((res) => {
-//       if (res.data.status == 200) {
-//         details.value = res.data.data;
-//       } else {
-//         errorMessage.value = "there is an error occured";
-//       }
-//     })
-//     .catch((err) => {
-//       errorMessage.value = "there is an error occured";
-//     })
-//     .finally(() => {
-//       loading.value = false;
-//     });
-// };
-
 onMounted(() => {
   getProduct(id);
 });

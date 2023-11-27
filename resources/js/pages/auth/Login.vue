@@ -6,12 +6,8 @@ const form = reactive({
   email: "",
   password: "",
 });
-
 const errors = ref(null);
-
 const loading = ref(false);
-
-// const accessToken = localStorage.getItem("access_token");
 const handleLogin = () => {
   loading.value = true;
   errors.value = null;
@@ -19,10 +15,6 @@ const handleLogin = () => {
     .post("/login", form)
     .then(() => {
       window.location.href = '/admin/dashboard';
-      // if (accessToken == null) {
-      //   generateNewToken();
-      // } else {
-      // }
     })
     .catch(err => {
         if(err.response.status == 422) {
@@ -34,10 +26,6 @@ const handleLogin = () => {
       loading.value = false;
     });
 };
-
-// const generateNewToken = () => {
-//   window.location.href = "/api/oauth/redirect";
-// }
 
 </script>
 <template>
