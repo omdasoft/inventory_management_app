@@ -37,8 +37,10 @@ export default function useProducts() {
             .then((res) => {
                 if (res.data.status == 200) {
                     productDetails.value = res.data.data;
-                } else {
-                    errorMessage.value = res.data.error;
+                }
+
+                if (res.data.status == 404) {
+                    errorMessage.value = "No data found";
                 }
             })
             .catch((err) => {
