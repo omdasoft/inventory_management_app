@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Services\CategoryService;
+use App\Services\Salla\SallaService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function __construct(private CategoryService $categoryService) 
+    public function __construct(private SallaService $sallaService) 
     {
         
     }
@@ -17,8 +17,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $response = $this->categoryService->categoryList();
-        return json_decode($response);
+        $categories = $this->sallaService->getCategories();
+        if($categories && $categories['status'] == 200) {
+            return response()->json(['status' => 200, 'data' => $categories['data'], 'metadata' => $categories['metadata']]);
+        } else {
+            return response()->json(['status' => $categories['status'], 'data' => $categories['error'], 'metadata' => []]);
+        }
     }
 
     /**
