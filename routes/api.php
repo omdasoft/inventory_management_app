@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\OAuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->prefix('admin/v1')->name('admin.')->group(function() {
+Route::prefix('admin/v1')->name('admin.')->group(function() {
     Route::get('products', [ProductController::class, 'index'])->name('products');
     Route::get('products/{id}', [ProductController::class, 'show'])->name('products.show');
     Route::get('categories', [CategoryController::class, 'index'])->name('categories');
