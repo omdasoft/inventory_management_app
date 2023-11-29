@@ -15,9 +15,9 @@ export default function useProducts() {
             .then((res) => {
                 if (res.data.status == 200) {
                     products.value = res.data.data;
-                    pagination.value = res.data.pagination;
+                    pagination.value = res.data.metadata;
                 } else {
-                    errorMessage.value = "there is an error occured";
+                    errorMessage.value = res.data.error;
                 }
             })
             .catch(err => {
@@ -38,7 +38,7 @@ export default function useProducts() {
                 if (res.data.status == 200) {
                     productDetails.value = res.data.data;
                 } else {
-                    errorMessage.value = "there is an error occured";
+                    errorMessage.value = res.data.error;
                 }
             })
             .catch((err) => {

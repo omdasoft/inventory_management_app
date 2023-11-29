@@ -48,29 +48,23 @@ onMounted(() => {
                 </li>
                 <li>
                   <h4>Category</h4>
-                  <h6 v-for="category in productDetails.categories" :key="category.id">
-                    {{ category.name }}
+                  <h6>
+                    <template v-for="category in productDetails.categories" :key="category.id">
+                      {{ category.name }}
+                    </template>
                   </h6>
                 </li>
                 <li>
                   <h4>Brand</h4>
                   <h6>{{ productDetails.brand }}</h6>
                 </li>
-                <!-- <li>
-                  <h4>Unit</h4>
-                  <h6>{{ details. }}</h6>
-                </li> -->
                 <li>
                   <h4>SKU</h4>
                   <h6>{{ productDetails.sku }}</h6>
                 </li>
-                <!-- <li>
-                  <h4>Minimum Qty</h4>
-                  <h6>{{ details. }}</h6>
-                </li> -->
                 <li>
                   <h4>Quantity</h4>
-                  <h6>{{ productDetails.quantity }}</h6>
+                  <h6>{{ productDetails.qty }}</h6>
                 </li>
                 <li>
                   <h4>Tax</h4>
@@ -86,7 +80,7 @@ onMounted(() => {
                   <h4>Price</h4>
                   <h6>
                     {{
-                      productDetails.regular_price ? productDetails.regular_price.amount : 0
+                      productDetails.price?.amount
                     }}
                   </h6>
                 </li>
@@ -97,7 +91,7 @@ onMounted(() => {
                 <li>
                   <h4>Description</h4>
                   <h6>
-                    {{ productDetails.description }}
+                    {{ productDetails.desc }}
                   </h6>
                 </li>
               </ul>

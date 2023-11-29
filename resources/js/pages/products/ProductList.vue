@@ -150,53 +150,48 @@ onMounted(() => {
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-if="products.length"
-                v-for="product in products"
-                :key="product.id"
-              >
-                <td>
-                  <label class="checkboxs">
-                    <input type="checkbox" />
-                    <span class="checkmarks"></span>
-                  </label>
-                </td>
-                <td class="productimgname">
-                  <a href="javascript:void(0);" class="product-img">
-                    <img :src="product.main_image" alt="product" />
-                  </a>
-                  <a href="javascript:void(0);">{{ product.name }}</a>
-                </td>
-                <td>{{ product.sku }}</td>
-                <td
-                  v-if="product.categories"
-                  v-for="category in product.categories"
-                  :key="category.id"
-                >
-                  {{ category.name }}
-                </td>
-                <td>{{ product.regular_price.amount }}</td>
-                <td>{{ product.sale_price.amount }}</td>
-                <td>{{ product.quantity }}</td>
-                <td>{{ product.status }}</td>
-                <td>
-                  <router-link
-                    :to="{
-                      name: 'product.details',
-                      params: { id: product.id },
-                    }"
-                    class="me-3"
-                  >
-                    <img src="/img/icons/eye.svg" alt="img" />
-                  </router-link>
-                  <a class="me-3" href="#">
-                    <img src="/img/icons/edit.svg" alt="img" />
-                  </a>
-                  <a class="confirm-text" href="javascript:void(0);">
-                    <img src="/img/icons/delete.svg" alt="img" />
-                  </a>
-                </td>
-              </tr>
+              <template v-if="products.length">
+                <tr v-for="product in products" :key="product.id">
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="productimgname">
+                    <a href="javascript:void(0);" class="product-img">
+                      <img :src="product.main_image" alt="product" />
+                    </a>
+                    <a href="javascript:void(0);">{{ product.name }}</a>
+                  </td>
+                  <td>{{ product.sku }}</td>
+                  <td v-for="category in product.categories" :key="category.id">
+                    {{ category.name }}
+                  </td>
+                  <td>{{ product.price.amount }}</td>
+                  <td>{{ product.sale_price.amount }}</td>
+                  <td>{{ product.qty }}</td>
+                  <td>{{ product.status }}</td>
+                  <td>
+                    <router-link
+                      :to="{
+                        name: 'product.details',
+                        params: { id: product.id },
+                      }"
+                      class="me-3"
+                    >
+                      <img src="/img/icons/eye.svg" alt="img" />
+                    </router-link>
+                    <a class="me-3" href="#">
+                      <img src="/img/icons/edit.svg" alt="img" />
+                    </a>
+                    <a class="confirm-text" href="javascript:void(0);">
+                      <img src="/img/icons/delete.svg" alt="img" />
+                    </a>
+                  </td>
+                </tr>
+              </template>
+
               <tr v-else>
                 <td colspan="9" class="text-center p-5">No Data Found</td>
               </tr>

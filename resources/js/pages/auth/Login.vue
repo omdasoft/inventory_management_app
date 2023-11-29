@@ -1,7 +1,7 @@
 <script setup>
 import axios from "axios";
 import { reactive, ref } from "vue";
-
+axios.defaults.baseURL = 'https://inventory_managment_app.test';
 const form = reactive({
   email: "",
   password: "",

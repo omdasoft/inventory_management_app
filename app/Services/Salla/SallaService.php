@@ -48,7 +48,7 @@ class SallaService
         }
     }
 
-    public function getProduct(int $id)
+    public function getProduct(int $id): array
     {
         try {
             $accessToken = $this->getAccessToken();
@@ -68,7 +68,7 @@ class SallaService
 
     }
 
-    public function getCategories()
+    public function getCategories(): array
     {
         try {
             $cacheKey = "salla_product_categories";
@@ -96,7 +96,7 @@ class SallaService
         }
     }
 
-    private function getAccessToken(): ?string
+    private function getAccessToken(): null|string
     {
         return (new SallaAuthService)->getToken();
     }

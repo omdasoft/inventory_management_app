@@ -11,7 +11,7 @@ class SallaProductsDTO {
                 'price' => ['amount' => $product['price']['amount'], 'currency' => $product['price']['currency']],
                 'sale_price' => ['amount' => $product['sale_price']['amount'], 'currency' => $product['sale_price']['currency']],
                 'sku' => $product['sku'],
-                'category' => array_map(fn($cat) => ['id' => $cat['id'], 'name' => $cat['name']], $product['categories']),
+                'categories' => array_map(fn($cat) => ['id' => $cat['id'], 'name' => $cat['name']], $product['categories']),
                 'qty' => $product['quantity'],
                 'status' => $product['status'],
                 'main_image' => $product['main_image'],
